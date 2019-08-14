@@ -1,0 +1,1 @@
+insert into brouwers(naam, straat, huisNr, postcode, gemeente, omzet) values ('test', 'test2', 'b7', 1111, 'gemeente', 1)

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments::head(title='Brewery')">
+</head>
+
+<body>
+<nav th:replace="fragments::menu"></nav>
+
+<h1>Brewery</h1>
+
+<ul>
+    <li th:each="brewer:${breweries}"
+        th:object="${brewer}">
+        <!--<span th:text="| *{name} (*{municipality})| "></span>-->
+        <a th:text="| *{name} (*{municipality})| "
+           th:href="@{/breweries/{id}(id=*{id})}"></a>
+
+        <ul>
+        </ul>
+    </li>
+</ul>
+</body>
+</html>

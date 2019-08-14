@@ -1,0 +1,16 @@
+
+<nav th:fragment="menu" xmlns:th='http://www.thymeleaf.org'>
+    <ul>
+        <li><a th:href="@{/}">Welcome</a></li>
+        <li><a th:href="@{/breweries}">Brouwers</a></li>
+        <li><a th:href="@{/cart}">Cart</a></li>
+    </ul>
+</nav>
+
+<head th:fragment="head(title)" xmlns:th="http://www.thymeleaf.org">
+    <link rel="icon" th:href="@{/images/bierhuis.ico}" type="image/x-icon">
+    <link rel="stylesheet" th:href="@{/css/beerhouse.css}">
+</head>
+
+
+

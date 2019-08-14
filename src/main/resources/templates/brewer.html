@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments::head(title=${brewer} == null ?
+'Brewer not found' : ${brewer.name})"></head>
+
+<body>
+<nav th:replace="fragments::menu"></nav>
+
+<h1 th:object="${brewer}" th:text="| *{name} (*{municipality})| "></h1>
+
+<ul>
+    <li th:each="beer:*{beers}">
+    <a th:text="${beer.name}"
+       th:href="@{/beers/{id}(id=*{beer.id})}"></a>
+    </li>
+</ul>
+
+
+
+</body>
+</html>

@@ -1,7 +1,6 @@
 package be.vdab.beerhouse.repositories;
 
 import be.vdab.beerhouse.domain.Beer;
-import be.vdab.beerhouse.exeptions.BeerNotFoundException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -44,6 +43,11 @@ public class JDBCBeerRepository implements BeerRepository {
     public List<Beer> findAll() {
         String sql = "select * from bieren";
         return (List<Beer>) template.queryForObject(sql, beerRowMapper);
+    }
+
+    @Override
+    public Integer count() {
+        return template.queryForObject("select count(*) from bieren;", null, Integer.class);
     }
 
 

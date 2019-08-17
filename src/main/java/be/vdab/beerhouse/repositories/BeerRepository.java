@@ -10,4 +10,6 @@ public interface BeerRepository {
     Beer findBeerById(long beerId);
     List<Beer> findAll();
 
+    Integer count();
+
 }

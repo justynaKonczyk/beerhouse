@@ -51,7 +51,7 @@ public class CartController {
 
     @PostMapping
     public String confirm(@Valid CartForm cartForm) {
-        orderService.save(OrderSaveCommand.builder()
+        long orderId = orderService.save(OrderSaveCommand.builder()
                 .houseNr(cartForm.getHouseNr())
                 .name(cartForm.getName())
                 .street(cartForm.getStreet())
@@ -65,7 +65,15 @@ public class CartController {
                                 .build())
                         .collect(Collectors.toList()))
                 .build());
-        return "redirect:/success";
+        cart.setOrderId(orderId);
+        return "redirect:/cart/success";
+    }
+
+    @GetMapping("success")
+    public ModelAndView getSuccess() {
+        ModelAndView modelAndView = new ModelAndView("success");
+        modelAndView.addObject("orderId", cart.getOrderId());
+        return modelAndView;
     }
 
     private BigDecimal calculateTotal(List<CartItem> cartItems) {

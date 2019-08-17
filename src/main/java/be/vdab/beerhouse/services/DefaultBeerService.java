@@ -33,6 +33,11 @@ public class DefaultBeerService implements BeerService {
         return repository.findAll();
     }
 
+    @Override
+    public Integer count() {
+        return repository.count();
+    }
+
 }
 
 

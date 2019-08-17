@@ -11,4 +11,5 @@ public interface BeerService {
     List<Beer> findAll();
 
 
+    Integer count();
 }

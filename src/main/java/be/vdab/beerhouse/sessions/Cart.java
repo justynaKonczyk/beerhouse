@@ -13,6 +13,7 @@ public class Cart implements Serializable {
 
     private final static long serialVersionUID = 1L;
 
+    private Long orderId;
     private final Map<Long, BigDecimal> amountsByBeerId = new LinkedHashMap<>();
 
     public void add(long beerId, BigDecimal amount) {
@@ -27,6 +28,18 @@ public class Cart implements Serializable {
 
     public Map<Long, BigDecimal> getAmountsByBeerId() {
         return amountsByBeerId;
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public Long getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(Long orderId) {
+        this.orderId = orderId;
     }
 
     @Override

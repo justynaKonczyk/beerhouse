@@ -10,7 +10,7 @@ public class Beer {
     private final long id;
 
     @NotBlank
-    private  final String name;
+    private final String name;
 
     @NotNull
     @PositiveOrZero
@@ -32,9 +32,9 @@ public class Beer {
     @PositiveOrZero
     private final long ordered;
 
-    public Beer(long id, @NotBlank String name, @NotNull @PositiveOrZero long brouwerId,
-                @NotNull @PositiveOrZero long soortId, @NotNull @PositiveOrZero BigDecimal price,
-                @NotNull @PositiveOrZero BigDecimal alcohol, @NotNull @PositiveOrZero long ordered) {
+    public Beer(long id, String name, long brouwerId,
+                long soortId, BigDecimal price,
+                BigDecimal alcohol, long ordered) {
         this.id = id;
         this.name = name;
         this.brouwerId = brouwerId;

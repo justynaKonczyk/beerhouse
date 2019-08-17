@@ -1,10 +1,13 @@
 package be.vdab.beerhouse.forms;
 
+import lombok.ToString;
+
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+@ToString
 public class CartForm {
 
     @NotBlank
@@ -14,7 +17,7 @@ public class CartForm {
     private String street;
 
     @NotBlank
-    private  String houseNr;
+    private String houseNr;
 
     @NotNull
     @Min(1000)
@@ -24,14 +27,7 @@ public class CartForm {
     @NotBlank
     private String gemeente;
 
-
-    public CartForm(@NotBlank String name, @NotBlank String street, @NotBlank String houseNr,
-                    @NotNull @Min(1000) @Max(9999) int postcode, @NotBlank String gemeente) {
-        this.name = name;
-        this.street = street;
-        this.houseNr = houseNr;
-        this.postcode = postcode;
-        this.gemeente = gemeente;
+    public CartForm() {
     }
 
     public String getName() {
@@ -52,5 +48,25 @@ public class CartForm {
 
     public String getGemeente() {
         return gemeente;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public void setHouseNr(String houseNr) {
+        this.houseNr = houseNr;
+    }
+
+    public void setPostcode(int postcode) {
+        this.postcode = postcode;
+    }
+
+    public void setGemeente(String gemeente) {
+        this.gemeente = gemeente;
     }
 }

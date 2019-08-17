@@ -9,4 +9,6 @@ public interface BeerService {
     List<Beer> findAllByBreweryId(long id);
     Beer findByBeerId(long id);
     List<Beer> findAll();
+
+
 }

@@ -32,6 +32,7 @@ public class DefaultBeerService implements BeerService {
     public List<Beer> findAll() {
         return repository.findAll();
     }
+
 }
 
 

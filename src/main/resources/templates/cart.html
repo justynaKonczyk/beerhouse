@@ -9,38 +9,49 @@
 
 <h1>Cart</h1>
 
-<!--<ul th:if="${pizzasInCart} !=null">-->
-<!--<li th:each="pizza:${pizzasInCart}"-->
-<!--th:text="${pizza.name}">-->
-
-<!--</li>-->
-<!--</ul>-->
-<div th:if="${cart} !== null" th:object="${cart}">
-    <dl>
-        <form th:object="${cartForm}"
-              method="post"
-              th:action="@{/cart}">
-
-            <dt>Name</dt>
-            <input th:field="*{name}" type="text"/>
-
-            <dt>Street</dt>
-            <input th:field="*{street}" type="text"/>
-
-            <dt>House Number</dt>
-            <input th:field="*{houseNr}" type="text"/>
-
-            <dt>Postcode</dt>
-            <input th:field="*{postcode}" type="number"/>
-
-            <dt>Gemeente</dt>
-            <input th:field="*{gemeente}" type="text"/>
+<table>
+    <tr>
+        <th>Beer</th>
+        <th>Price</th>
+        <th>Amount</th>
+        <th>Subtotal</th>
+    </tr>
+    <tr th:each="cartItem:${cartItems}" th:object="${cartItem}">
+        <td th:text="${cartItem.beer.name}"></td>
+        <td th:text="${cartItem.beer.price}"></td>
+        <td th:text="${cartItem.amount}"></td>
+        <td th:text="${cartItem.subtotal}"></td>
+    </tr>
+    <tr>
+        <td><b>Total: </b></td>
+        <td th:text="${total}"></td>
+    </tr>
+</table>
 
 
-            <input type="submit" value="Confirm an order">
+<div>
+    <form th:object="${cartForm}"
+          method="post"
+          th:action="@{/cart}">
 
-        </form>
-    </dl>
+        <dt>Name</dt>
+        <input th:field="*{name}" type="text"/>
+
+        <dt>Street</dt>
+        <input th:field="*{street}" type="text"/>
+
+        <dt>House Number</dt>
+        <input th:field="*{houseNr}" type="text"/>
+
+        <dt>Postcode</dt>
+        <input th:field="*{postcode}" type="number"/>
+
+        <dt>Gemeente</dt>
+        <input th:field="*{gemeente}" type="text"/>
+
+        <input type="submit" value="Confirm an order">
+
+    </form>
 </div>
 
 <script th:src="@{/js/preventDoubleSubmit.js}"></script>

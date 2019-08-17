@@ -15,10 +15,13 @@ public class JDBCBeerRepository implements BeerRepository {
     private final JdbcTemplate template;
     private final RowMapper<Beer> beerRowMapper =
             (result, rowNum) ->
-                    new Beer(result.getInt("id"), result.getString("naam"),
-                            result.getInt("brouwerid"), result.getInt("soortid"),
-                            result.getBigDecimal("alcohol"), result.getBigDecimal("prijs"),
-                            result.getInt("besteld"));
+            {
+                int id = result.getInt("id");
+                return new Beer(id, result.getString("naam"),
+                        result.getInt("brouwerid"), result.getInt("soortid"),
+                        result.getBigDecimal("prijs"), result.getBigDecimal("alcohol"),
+                        result.getInt("besteld"));
+            };
 
 
     public JDBCBeerRepository(JdbcTemplate template) {
@@ -44,21 +47,6 @@ public class JDBCBeerRepository implements BeerRepository {
     }
 
 
-    @Override
-    public long insert(Beer beer) {
-        return 0;
-    }
-
-    @Override
-    public long update(Beer beer) {
-        return 0;
-    }
-
-    @Override
-    public long delete(Beer beer) {
-        return 0;
-    }
-}
 //
 //    @Override
 //    public void update(Beer beer) {
@@ -74,5 +62,5 @@ public class JDBCBeerRepository implements BeerRepository {
 //    public void delete(int besteld) {
 //        template.update("delete from bieren where besteld=?", besteld);
 //
-//    }
+}
 

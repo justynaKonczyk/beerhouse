@@ -6,7 +6,9 @@
 <body>
 <nav th:replace="fragments::menu"></nav>
 
-<h1 th:object="${beer}" th:text="${beer.name}"></h1>
+<h1 th:object="${beer}"
+    th:text="${beer.name}"></h1>
+
 
 <div th:if="${beer} !=null" th:object="${beer}">
     <dl>

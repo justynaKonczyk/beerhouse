@@ -9,7 +9,5 @@ public interface BeerRepository {
     List<Beer> findAllByBreweryId(long breweryId);
     Beer findBeerById(long beerId);
     List<Beer> findAll();
-    long insert(Beer beer);
-    long update(Beer beer);
-    long delete(Beer beer);
+
 }

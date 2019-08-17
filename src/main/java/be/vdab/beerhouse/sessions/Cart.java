@@ -1,7 +1,6 @@
 package be.vdab.beerhouse.sessions;
 
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.context.annotation.SessionScope;
 
 import java.io.Serializable;
@@ -13,20 +12,27 @@ import java.util.*;
 public class Cart implements Serializable {
 
     private final static long serialVersionUID = 1L;
-    private final Map<Long, BigDecimal> productsAndAmount = new LinkedHashMap<>();
 
-    public void add(long id, BigDecimal amount){
-        if (productsAndAmount.containsKey(id)){
-            productsAndAmount.put(id, productsAndAmount.get(id)
-            .add(amount));
+    private final Map<Long, BigDecimal> amountsByBeerId = new LinkedHashMap<>();
 
-        }else{
-            productsAndAmount.put(id, amount);
+    public void add(long beerId, BigDecimal amount) {
+        if (amountsByBeerId.containsKey(beerId)) {
+            BigDecimal currentAmount = amountsByBeerId.get(beerId);
+            BigDecimal updatedAmount = currentAmount.add(amount);
+            amountsByBeerId.put(beerId, updatedAmount);
+        } else {
+            amountsByBeerId.put(beerId, amount);
         }
     }
 
-    public Map<Long, BigDecimal> getProductsAndAmount(){
-        return productsAndAmount;
+    public Map<Long, BigDecimal> getAmountsByBeerId() {
+        return amountsByBeerId;
     }
 
+    @Override
+    public String toString() {
+        return "Cart{" +
+                "amountsByBeerId=" + amountsByBeerId +
+                '}';
+    }
 }

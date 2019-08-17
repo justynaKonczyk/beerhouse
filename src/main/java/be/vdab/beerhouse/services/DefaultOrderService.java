@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class DefaultOrderService implements OrderService {
 
-
     private final OrderFactory factory;
     private final OrderRepository repository;
     private final OrderItemRepository itemRepository;
